@@ -17,8 +17,8 @@
             <RowDefinition Height="20*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Click="OpenFileBtn_OnClick" Name="OpenFileBtn" Grid.Column="0" Grid.Row="1">Open</Button> <!-- Content = "Open"-->
-        <Button Name="ReadFileBtn" Grid.Column="2" Grid.Row="1">Read</Button>
+        <Button Click="SaveFileBtn_OnClick" Name="OpenFileBtn" Grid.Column="0" Grid.Row="1">Save</Button> <!-- Content = "Open"-->
+        <Button Click="OpenFileBtn_OnClick" Name="ReadFileBtn" Grid.Column="2" Grid.Row="1">Open</Button>
         <TextBox Name="MainTextBox" Grid.Column="1" Grid.Row="1"></TextBox>
     </Grid>
 </Window>
