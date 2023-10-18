@@ -6,19 +6,26 @@
         xmlns:local="clr-namespace:TextEditor2023"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="DarkSlateGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="10*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="20*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Click="SaveFileBtn_OnClick" Name="OpenFileBtn" Grid.Column="0" Grid.Row="1">Save</Button> <!-- Content = "Open"-->
-        <Button Click="OpenFileBtn_OnClick" Name="ReadFileBtn" Grid.Column="2" Grid.Row="1">Open</Button>
-        <TextBox Name="MainTextBox" Grid.Column="1" Grid.Row="1"></TextBox>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Separator Width="10" Visibility="Hidden"></Separator>
+            <Button Click="SaveFileBtn_OnClick" Height="35" Name="OpenFileBtn">Save</Button> 
+            <!-- Content = "Open"-->
+            <Separator Width="10" Visibility="Hidden"></Separator>
+            <Button Click="OpenFileBtn_OnClick" Name="ReadFileBtn">Open</Button>
+            <Separator Width="10" Visibility="Hidden"></Separator>
+            <ToggleButton Name="ToggleBoldBtn" Click="ToggleBoldBtn_OnClick">B</ToggleButton>
+        </StackPanel>
+        <RichTextBox Name="MainTextBox" Grid.Column="1" Grid.Row="1" FontSize="16" ></RichTextBox>
     </Grid>
 </Window>

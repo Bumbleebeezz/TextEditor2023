@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using Path = System.IO.Path;
 
 namespace TextEditor2023
@@ -39,26 +40,49 @@ namespace TextEditor2023
 
         private void SaveFileBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            // Save input text 
-            var mainMenuText = MainTextBox.Text;
+            SaveFileDialog saveFileDlg = new SaveFileDialog();
+            if (saveFileDlg.ShowDialog() == true)
+            {
+                // Create data stream 
+                var stream = new FileStream(saveFileDlg.FileName, FileMode.Create);
+                // Save input text 
+                var mainMenuText = new TextRange(MainTextBox.Document.ContentStart, MainTextBox.Document.ContentEnd); 
+                // Save to file through stream
+                mainMenuText.Save(stream, DataFormats.Text);
 
-            // Save to file
-            // using, no need to close StreamWriter 
-            using var sw = new StreamWriter(_filePath);
-            sw.Write(mainMenuText);
+                //// using, no need to close StreamWriter 
+                //using var sw = new StreamWriter(saveFileDlg.FileName);
+                //sw.Write(mainMenuText);
+            }
         }
 
         private void OpenFileBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            // Read file 
-            using var sr = new StreamReader(_filePath);
-            // Read the entire file at once
-            var text = sr.ReadToEnd();
+            // Open file dialog 
+            OpenFileDialog openFileDlg = new OpenFileDialog();
+            if (openFileDlg.ShowDialog() == true)
+            {
+                // Read file 
+                using var sr = new StreamReader(openFileDlg.FileName);
+                // Read the entire file at once
+                var text = sr.ReadToEnd();
 
-            // Display text in MainTextBox
-            // text = property {get; set;}
-            MainTextBox.Text = text;
+                //// Display text in MainTextBox
+                //// text = property {get; set;}
+                // MainTextBox.Document = text;
+            }
+        }
 
+        private void ToggleBoldBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (ToggleBoldBtn.IsChecked == true)
+            {
+                MainTextBox.FontWeight = FontWeights.ExtraBold;
+            }
+            else
+            {
+                MainTextBox.FontWeight = FontWeights.Normal;
+            }
         }
     }
 }
