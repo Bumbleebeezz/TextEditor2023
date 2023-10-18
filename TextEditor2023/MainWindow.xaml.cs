@@ -69,7 +69,7 @@ namespace TextEditor2023
 
                 //// Display text in MainTextBox
                 //// text = property {get; set;}
-                // MainTextBox.Document = text;
+                MainTextBox.Document = text;
             }
         }
 
