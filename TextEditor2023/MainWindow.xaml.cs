@@ -69,20 +69,28 @@ namespace TextEditor2023
 
                 //// Display text in MainTextBox
                 //// text = property {get; set;}
-                MainTextBox.Document = text;
+                // MainTextBox.Document = text;
             }
         }
 
-        private void ToggleBoldBtn_OnClick(object sender, RoutedEventArgs e)
+        private void FontSizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ToggleBoldBtn.IsChecked == true)
-            {
-                MainTextBox.FontWeight = FontWeights.ExtraBold;
-            }
-            else
-            {
-                MainTextBox.FontWeight = FontWeights.Normal;
-            }
+
+        }
+
+        private void BoldBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ItalicBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UnderlineBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

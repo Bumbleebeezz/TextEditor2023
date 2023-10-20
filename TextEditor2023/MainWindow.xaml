@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:TextEditor2023"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid Background="DarkSlateGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -17,15 +18,34 @@
             <RowDefinition Height="20*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <Separator Width="10" Visibility="Hidden"></Separator>
-            <Button Click="SaveFileBtn_OnClick" Height="35" Name="OpenFileBtn">Save</Button> 
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <Button Click="SaveFileBtn_OnClick" Name="OpenFileBtn" Grid.Column="0" Grid.Row="1">Save</Button>
             <!-- Content = "Open"-->
             <Separator Width="10" Visibility="Hidden"></Separator>
-            <Button Click="OpenFileBtn_OnClick" Name="ReadFileBtn">Open</Button>
+            <Button Click="OpenFileBtn_OnClick" Name="ReadFileBtn" Grid.Column="0" Grid.Row="1">Open</Button>
             <Separator Width="10" Visibility="Hidden"></Separator>
-            <ToggleButton Name="ToggleBoldBtn" Click="ToggleBoldBtn_OnClick">B</ToggleButton>
+            <Button Name="BoldBtn" FontWeight="Bold" Click="BoldBtn_Click">Bold</Button>
+            <Separator Width="10" Visibility="Hidden"></Separator>
+            <Button Name="ItalicBtn" FontStyle="Italic" Click="ItalicBtn_Click">Italic</Button>
+            <Separator Width="10" Visibility="Hidden"></Separator>
+            <Button Name="UnderlineBtn" Click="UnderlineBtn_Click">
+                <Underline>Underline</Underline>
+            </Button>
+            <Separator Width="10" Visibility="Hidden"></Separator>
+            <ComboBox
+                Name="FontSizeComboBox"
+                Width="40" 
+                SelectionChanged="FontSizeComboBox_SelectionChanged"
+                ></ComboBox>
+            <Separator Width="10" Visibility="Hidden"></Separator>
+            <ComboBox
+                Name="FontFamilyComboBox"
+                Width="80" 
+                SelectionChanged="FontSizeComboBox_SelectionChanged"
+                ></ComboBox>
         </StackPanel>
-        <RichTextBox Name="MainTextBox" Grid.Column="1" Grid.Row="1" FontSize="16" ></RichTextBox>
+
+        <RichTextBox Name="MainTextBox" Grid.Column="1" Grid.Row="1" FontSize="{Binding FontSizes, Mode=OneWay}" FontFamily="{Binding FontFamily, Mode=OneWay}"></RichTextBox>
     </Grid>
 </Window>
